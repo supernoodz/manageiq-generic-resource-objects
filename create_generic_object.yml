@@ -34,9 +34,9 @@
           attribute_1: "{{ attribute_1 }}"
           attribute_2: "{{ attribute_2 }}"
           attribute_3: "false"
-        # associations:
-        #   vms:
-        #   - href: "{{ manageiq.api_url }}/api/{{ association_vm }}"
+        associations:
+          vms:
+          - href: "{{ manageiq.api_url }}/api/{{ association_vm }}"
     register: new_go
     
   - name: Add generic object to service
