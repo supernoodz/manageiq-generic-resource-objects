@@ -17,7 +17,7 @@
       body_format: json
       body:
         action: create
-        name: MyGOClass
+        name: "{{ go_class }}"
         properties:
           attributes:
             attribute_1: integer
