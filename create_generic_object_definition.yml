@@ -1,20 +1,25 @@
 ---
-- name: Create Generic Object from Service
-  hosts: all
+- hosts: all
 
   vars:
   - manageiq_validate_certs: False
-  - go_class_name: "{{ 'MyGOClass'|urlencode }}"
-
+  
   tasks:
   - name: Create Generic Object Definition
     uri:
-      url: "{{ manageiq.api_url }}/api/generic_object_definitions"
+      # url: "{{ manageiq.api_url }}/api/generic_object_definitions"
+      # method: POST
+      # validate_certs: no
+      # headers:
+      #   Content-Type:  application/json
+      #   X-Auth-Token: "{{ manageiq.api_token }}"
+      url: "https://localhost/api/generic_object_definitions"
       method: POST
+      user: admin
+      password: "{{ password }}"
       validate_certs: no
       headers:
         Content-Type:  application/json
-        X-Auth-Token: "{{ manageiq.api_token }}"
       body_format: json
       body:
         action: create
