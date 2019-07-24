@@ -9,13 +9,12 @@
   tasks:
   - name: Create Generic Object Definition
     uri:
-      url: "https://localhost/api/generic_object_definitions"
+      url: "{{ manageiq.api_url }}/api/generic_object_definitions"
       method: POST
-      user: admin
-      password: "{{ password }}"
       validate_certs: no
       headers:
-        Content-Type:  application/json
+        # Content-Type:  application/json
+        X-Auth-Token: "{{ manageiq.api_token }}"
       body_format: json
       body:
         action: create
