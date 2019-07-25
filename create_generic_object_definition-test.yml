@@ -1,0 +1,27 @@
+---
+- hosts: all
+
+  vars:
+  - manageiq_validate_certs: False
+  
+  tasks:
+  - name: Create Generic Object Definition
+    uri:
+      url: "{{ manageiq.api_url }}/api/generic_object_definitions"
+      method: POST
+      validate_certs: no
+      headers:
+        Content-Type:  application/json
+        X-Auth-Token: "{{ manageiq.api_token }}"
+      body_format: json
+      body:
+        action: create
+        name: "{{ go_class }}"
+        properties:
+          attributes:
+            attribute_1: integer
+            attribute_2: string
+            attribute_3: boolean
+          associations:
+            service: vms
+            provider: Vm
