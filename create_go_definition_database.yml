@@ -1,0 +1,31 @@
+---
+- hosts: all
+
+  vars:
+  - manageiq_validate_certs: False
+  
+  tasks:
+  - name: Create Generic Object Definition
+    uri:
+      url: "https://localhost/api/generic_object_definitions"
+      method: POST
+      user: admin
+      password: "{{ password }}"
+      validate_certs: no
+      headers:
+        Content-Type:  application/json
+      body_format: json
+      body:
+        action: create
+        name: database
+        properties:
+          attributes:
+            name: string
+            vendor: string
+            enabled: boolean
+          methods:
+            go_install:
+              execute: go_install
+          associations:
+            service: vms
+            provider: Vm
