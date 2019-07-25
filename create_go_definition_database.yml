@@ -23,9 +23,7 @@
             name: string
             vendor: string
             enabled: boolean
-          methods:
-            go_install:
-              execute: go_install
+          methods: go_install
           associations:
             service: vms
             provider: Vm
